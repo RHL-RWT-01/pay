@@ -38,13 +38,15 @@ router.post("/login", async (req, res) => {
                 .json({ message: "Please provide all required fields" });
         }
         const user = await User.findOne({ email });
-
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch || !user) {
+        if (!isMatch) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
         const token = generateToken(user._id, res);
-        
+
         res.status(200).json({ message: "User logged in successfully", token });
     } catch (e) {
         console.log("Error in login route", e);
@@ -68,6 +70,30 @@ router.post("/update", protectedRoute, async (req, res) => {
         res.status(200).json({ message: "User updated successfully", user, token });
     } catch (e) {
         console.log("Error in update route", e);
+        res.status(500).json({ message: e.message });
+    }
+});
+
+router.get("/findall", protectedRoute, async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.status(200).json({ users });
+    } catch (e) {
+        console.log("Error in findall route", e);
+        res.status(500).json({ message: e.message });
+    }
+})
+
+router.get("/findByStartsWith", protectedRoute, async (req, res) => {
+    try {
+        const { name } = req.query;
+        if (!name) {
+            return res.status(400).json({ message: "Please provide a name" });
+        }
+        const users = await User.find({ name: { $regex: `^${name}`, $options: "i" } });
+        res.status(200).json({ users });
+    } catch (e) {
+        console.log("Error in findByStartsWith route", e);
         res.status(500).json({ message: e.message });
     }
 });
