@@ -15,6 +15,6 @@ app.get('/',(req,res)=>{
     res.json({ message: 'Welcome to the REST API!' });
 })
 
-app.use('/user',userRoutes);
+app.use('/api/v1/user',userRoutes);
 
 app.listen((port));
