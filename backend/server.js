@@ -11,9 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
-app.get('/',(req,res)=>{
-    res.json({ message: 'Welcome to the REST API!' });
-})
 
 app.use('/api/v1/user',userRoutes);
 

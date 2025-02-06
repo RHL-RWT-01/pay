@@ -22,7 +22,6 @@ router.post("/signup", async (req, res) => {
 
         const user = new User({ name, email, password: hashedPassword });
         user.save();
-        const userId = user._id;
         res.status(201).json({ message: "User registered successfully" });
     } catch (e) {
         console.log("Error in signup route", e);
@@ -45,6 +44,7 @@ router.post("/login", async (req, res) => {
             return res.status(401).json({ message: "Invalid credentials" });
         }
         const token = generateToken(user._id, res);
+        
         res.status(200).json({ message: "User logged in successfully", token });
     } catch (e) {
         console.log("Error in login route", e);
@@ -60,7 +60,7 @@ router.post("/update", protectedRoute, async (req, res) => {
         }
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const user = await User.findByIdAndUpdate(req.user._id, { name, email, password:hashedPassword }, { new: true });
+        const user = await User.findByIdAndUpdate(req.user._id, { name, email, password: hashedPassword }, { new: true });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
