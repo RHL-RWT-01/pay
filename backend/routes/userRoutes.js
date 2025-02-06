@@ -72,4 +72,14 @@ router.post("/update", protectedRoute, async (req, res) => {
     }
 });
 
+router.delete("/logout", protectedRoute, async (req, res) => {
+    try {
+        res.clearCookie("jwt");
+        res.status(200).json({ message: "User logged out successfully" });
+    } catch (e) {
+        console.log("Error in logout route", e);
+        res.status(500).json({ message: e.message });
+    }
+});
+
 export default router;
