@@ -58,7 +58,9 @@ router.post("/update", protectedRoute, async (req, res) => {
         if (!name || !email || !password) {
             return res.status(400).json({ message: "Please provide all required fields" });
         }
-        const user = await User.findByIdAndUpdate(req.user._id, { name, email, password }, { new: true });
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const user = await User.findByIdAndUpdate(req.user._id, { name, email, password:hashedPassword }, { new: true });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
