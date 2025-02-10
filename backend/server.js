@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
+import transactionRoutes from './routes/transactionRoutes.js';
 import cors from 'cors';
 import { connectDB } from './db/connectDB.js';
 
@@ -14,6 +15,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use('/api/v1/user',userRoutes);
+app.use('/api/v1/transactions',transactionRoutes);
 
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
