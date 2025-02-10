@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 const router = express.Router();
 import { generateToken } from "../utils/generateToken.js";
 import { protectedRoute } from "../middlewares/protectedRoute.js";
+import Amount from "../db/amount.js";
 
 router.post("/signup", async (req, res) => {
     try {
@@ -22,6 +23,8 @@ router.post("/signup", async (req, res) => {
 
         const user = new User({ name, email, password: hashedPassword });
         user.save();
+        const token = generateToken(user._id, res);
+        const amount = await Amount.create({ balance: 10000, userId: user._id });
         res.status(201).json({ message: "User registered successfully" });
     } catch (e) {
         console.log("Error in signup route", e);
