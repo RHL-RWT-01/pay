@@ -1,6 +1,6 @@
 import express from 'express';
 import { protectedRoute } from '../middlewares/protectedRoute.js';
-import { transferAmount } from '../db/transfer.js';
+import { transferAmount } from '../utils/transfer.js';
 import Amount from '../db/amount.js';
 
 const router = express.Router();

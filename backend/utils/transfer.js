@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import Amount from "./amount";
-import User from "./user";
+import Amount from "../db/amount.js";
 
 export const transferAmount = async (toId,fromId,amount) => {
     const session = await mongoose.startSession();
