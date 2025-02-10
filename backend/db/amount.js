@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const amountSchema = mongoose.Schema({
-    amount: {
+    balance: {
         type: Number, required: true
     },
     userId: {
