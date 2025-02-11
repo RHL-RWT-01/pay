@@ -1,11 +1,13 @@
-
+import { Button, VStack } from "@chakra-ui/react";
+import Login from "./compos/Login";
 function App() {
-
   return (
     <>
-      <h1>Rahul</h1>
+      <VStack>
+        <Login />
+      </VStack>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
