@@ -17,7 +17,7 @@ router.post('/transfer', protectedRoute, async (req, res) => {
 
 router.get('/balance', protectedRoute, async (req, res) => {
     try {
-        const balance = await Amount.findById(req.user._id, 'balance');
+        const balance = await Amount.findOne({ userId: req.user._id }).select('balance');
         if (!balance) {
             return res.status(404).json({ error: "Balance not found" });
         }

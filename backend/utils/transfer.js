@@ -6,7 +6,7 @@ export const transferAmount = async (toId,fromId,amount) => {
     try{
         await session.startTransaction();
         
-        const fromUser = await Amount.findById(fromId).session(session);
+        const fromUser = await Amount.findOne({userId:fromId}).session(session);
         if(!fromUser){
             throw new Error("From user not found");
         }
@@ -18,7 +18,7 @@ export const transferAmount = async (toId,fromId,amount) => {
         fromUser.balance -= amount;
         await fromUser.save();
         
-        const toUser = await Amount.findByIdAndUpdate(toId, {$inc: {balance: amount}}, {new: true}).session(session);
+        const toUser = await Amount.findOneAndUpdate({userId:toId}, {$inc: {balance: amount}}, {new: true}).session(session);
         
         await session.commitTransaction();
         
