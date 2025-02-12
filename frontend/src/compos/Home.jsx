@@ -1,6 +1,7 @@
 import { Button, Heading, HStack, IconButton, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import Profile from "./Profile";
 
 function Home() {
   const [searchUser, setSearchUser] = useState("");
@@ -16,6 +17,7 @@ function Home() {
   };
   return (
     <>
+     <Heading shadow='lg' shadowColor='red.400' color='blue.600' fontSize="16px" >PayEasy</Heading>
       <HStack p={4}>
         <Input
           w="800px"
@@ -25,6 +27,8 @@ function Home() {
         <IconButton>
           <FaSearch onClick={handleSearch} size="25px" />
         </IconButton>
+
+        <Profile/>
       </HStack>
       {/* {!searchUser ? (
         <Heading fontSize="16px" > User Not Found</Heading>
