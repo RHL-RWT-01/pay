@@ -1,4 +1,4 @@
-import { Button, Spinner, VStack } from "@chakra-ui/react";
+import { Button, Center, Spinner, VStack } from "@chakra-ui/react";
 import Login from "./compos/Login";
 import Signup from "./compos/Signup";
 import Home from "./compos/Home";
@@ -10,19 +10,24 @@ function App() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: "isAuthenticated",
+    queryKey: ["isAuthenticated"],
     queryFn: async () => {
-      try{
-        const res=await fetch("url");
-        if(!res.ok) throw new Error("Failed to authenticate");
+      try {
+        const res = await fetch("url");
+        if (!res.ok) throw new Error("Failed to authenticate");
         return res.json();
-      }catch(e){
+      } catch (e) {
         throw new Error("Failed to authenticate");
       }
-    }
+    },
   });
 
-  if(isLoading)return <Spinner size='md'></Spinner>
+  if (isLoading)
+    return (
+      <Center h="100vh">
+        <Spinner size="xl"></Spinner>
+      </Center>
+    );
   return (
     <>
       <VStack>
