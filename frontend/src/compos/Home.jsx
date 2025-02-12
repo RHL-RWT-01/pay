@@ -1,4 +1,4 @@
-import { Button, Heading, HStack, Input } from "@chakra-ui/react";
+import { Button, Heading, HStack, IconButton, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
@@ -16,19 +16,21 @@ function Home() {
   };
   return (
     <>
-      <HStack>
+      <HStack p={4}>
         <Input
           w="800px"
           onChange={(e) => setSearchUser(e.target.value)}
           placeholder="search user by email"
         ></Input>
-        <FaSearch onClick={handleSearch} size="25px" />
+        <IconButton>
+          <FaSearch onClick={handleSearch} size="25px" />
+        </IconButton>
       </HStack>
-      {!searchUser ? (
+      {/* {!searchUser ? (
         <Heading fontSize="16px" > User Not Found</Heading>
       ) : (
         <Users users={searchUser} />
-      )}
+      )} */}
     </>
   );
 }

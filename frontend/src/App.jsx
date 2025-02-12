@@ -23,12 +23,12 @@ function App() {
     },
   });
 
-  if (isLoading)
-    return (
-      <Center h="100vh">
-        <Spinner size="xl"></Spinner>
-      </Center>
-    );
+  // if (isLoading)
+  //   return (
+  //     <Center h="100vh">
+  //       <Spinner size="xl"></Spinner>
+  //     </Center>
+  //   );
   return (
     <>
       <VStack>

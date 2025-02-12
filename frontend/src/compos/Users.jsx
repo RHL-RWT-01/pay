@@ -7,9 +7,12 @@ function Users({ users }) {
       <VStack w='100%' p={4} >
       {dummy.map((user, index) => {
         return (
-          <HStack key={index} w='100%' justifyContent='space-between' p={4} boxShadow='md' borderRadius='lg' shadow='md'  >
+          <HStack key={index} w='100%' justifyContent='space-between' p={4} boxShadow='md' borderRadius='lg' shadow='md' 
+          borderColor='gray.900' borderWidth='1px'>
             <Heading>{user.name}</Heading>
-            <Button size='xs' >Send</Button>
+            <Button size='xs' 
+            _hover={{ bg: "black", color:"white", borderColor:"blue" }}
+            >Send</Button>
           </HStack>
         );
       })}
