@@ -3,6 +3,7 @@ import Login from "./compos/Login";
 import Signup from "./compos/Signup";
 import Home from "./compos/Home";
 import { useQuery } from "@tanstack/react-query";
+import Users from "./compos/Users";
 function App() {
   //TODO => add api url to validate me in BE and here also
   const {
@@ -34,6 +35,7 @@ function App() {
         {/* <Login /> */}
         {/* <Signup /> */}
         <Home />
+        <Users />
       </VStack>
     </>
   );
