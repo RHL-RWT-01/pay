@@ -19,7 +19,7 @@ export const transferAmount = async (toId,fromId,amount) => {
         await fromUser.save();
         
         const toUser = await Amount.findOneAndUpdate({userId:toId}, {$inc: {balance: amount}}, {new: true}).session(session);
-        
+        toUser.save();
         await session.commitTransaction();
         
         return {message: "Transfer successful"};
