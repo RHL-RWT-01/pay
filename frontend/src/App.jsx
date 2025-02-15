@@ -3,10 +3,12 @@ import Login from "./compos/Login";
 import Signup from "./compos/Signup";
 import Home from "./compos/Home";
 import { useQuery } from "@tanstack/react-query";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Users from "./compos/Users";
 import Profile from "./compos/Profile";
 function App() {
   //TODO => add api url to validate me in BE and here also
+  const isAuth=true;
   const {
     data: isAuthenticated,
     isLoading,
@@ -24,27 +26,12 @@ function App() {
     },
   });
 
-  // if (isLoading)
-  //   return (
-  //     <Center h="100vh">
-  //       <Spinner size="xl"></Spinner>
-  //     </Center>
-  //   );
+  
   return (
     <>
-      <VStack>
-        {isAuthenticated ? (
-          <>
-            <Home />
-            <Profile />
-          </>
-        ) : (
-          <>
-            <Login />
-            {/* <Signup /> */}
-          </>
-        )}
-      </VStack>
+      <Routes>
+        <Route path="/" element={isAuth?<Home />:<Navigate to='/login'/>} />
+      </Routes>
     </>
   );
 }
