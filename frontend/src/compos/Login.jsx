@@ -36,6 +36,9 @@ function Login() {
       >
         Login
       </Button>
+      <Button>Don't Have 
+      <a href="/signup">Signup</a>
+      </Button>
     </VStack>
   );
 }
