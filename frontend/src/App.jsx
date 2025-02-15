@@ -33,16 +33,18 @@ function App() {
   return (
     <>
       <VStack>
-        {/* <Login /> */}
-        {/* <Signup /> */}
-
-        {/* <HStack >
-          <Home />
-          <Profile />
-        </HStack>
-        <Users />*/}
-        <Profile />
-      </VStack> 
+        {isAuthenticated ? (
+          <>
+            <Home />
+            <Profile />
+          </>
+        ) : (
+          <>
+            <Login />
+            {/* <Signup /> */}
+          </>
+        )}
+      </VStack>
     </>
   );
 }
