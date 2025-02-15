@@ -36,7 +36,7 @@ function Login() {
       >
         Login
       </Button>
-      <Button>Don't Have 
+      <Button>Don't Have Account 
       <a href="/signup">Signup</a>
       </Button>
     </VStack>
