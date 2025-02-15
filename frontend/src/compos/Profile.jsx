@@ -1,21 +1,29 @@
-import { Avatar, AvatarFallback, Box, Button } from "@chakra-ui/react";
+import { Avatar, AvatarFallback, Box, Button, Spinner } from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
+import { BsBox } from "react-icons/bs";
 
 const Profile = () => {
-  const queryClient = useQueryClient();
-  const user = queryClient.getQueryData("user");
+  const { data:balance, isLoading } = useQueryClient({
+    queryKey: ["balance"],
+    queryFn: async () => {
+      const response = await fetch("/api/v1/transactions/balance", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch balance");
+      }
+      return await response.json();
+    },
+  });
   return (
     <>
-      <Button
-        colorScheme="red"
-        size="lg"
-        variant="outline"
-        onClick={() => {
-          
-        }}
-      >
-        Chack balance
+      <Button colorScheme="red" size="lg" variant="outline"
+       >{isLoading?<Spinner/>:"Balance"}
       </Button>
+     {balance && <h1>{balance}</h1>}
     </>
   );
 };
