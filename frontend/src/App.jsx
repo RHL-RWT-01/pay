@@ -1,9 +1,10 @@
-import { Button, Center, Spinner, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Spinner, VStack } from "@chakra-ui/react";
 import Login from "./compos/Login";
 import Signup from "./compos/Signup";
 import Home from "./compos/Home";
 import { useQuery } from "@tanstack/react-query";
 import Users from "./compos/Users";
+import Profile from "./compos/Profile";
 function App() {
   //TODO => add api url to validate me in BE and here also
   const {
@@ -34,9 +35,14 @@ function App() {
       <VStack>
         {/* <Login /> */}
         {/* <Signup /> */}
-        <Home />
-        <Users />
-      </VStack>
+
+        {/* <HStack >
+          <Home />
+          <Profile />
+        </HStack>
+        <Users />*/}
+        <Profile />
+      </VStack> 
     </>
   );
 }

@@ -20,7 +20,7 @@ function Home() {
      <Heading shadow='lg' shadowColor='red.400' color='blue.600' fontSize="16px" >PayEasy</Heading>
       <HStack p={4}>
         <Input
-          w="800px"
+          w="100%"
           onChange={(e) => setSearchUser(e.target.value)}
           placeholder="search user by email"
         ></Input>
@@ -28,7 +28,7 @@ function Home() {
           <FaSearch onClick={handleSearch} size="25px" />
         </IconButton>
 
-        <Profile/>
+        {/* <Profile/> */}
       </HStack>
       {/* {!searchUser ? (
         <Heading fontSize="16px" > User Not Found</Heading>

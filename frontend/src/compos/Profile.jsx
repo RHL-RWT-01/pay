@@ -1,25 +1,22 @@
-import { Avatar, AvatarFallback, Box } from "@chakra-ui/react";
+import { Avatar, AvatarFallback, Box, Button } from "@chakra-ui/react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Profile = () => {
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueryData("user");
   return (
-    <Box
-      maxW="40px"
-      w="full"
-      p={5}
-      border="1px solid #E6E6E6"
-      borderRadius="lg"
-      overflow="hidden"
-      cursor="pointer"
-      transition="all 0.3s ease-in-out"
-      rounded="full"
-      boxShadow="md"
-      shadowColor='blue.600'
-      textAlign="center"
-      bg="white"
-    >
-        
-      
-    </Box>
+    <>
+      <Button
+        colorScheme="red"
+        size="lg"
+        variant="outline"
+        onClick={() => {
+          
+        }}
+      >
+        Chack balance
+      </Button>
+    </>
   );
 };
 
