@@ -5,7 +5,7 @@ function Users({ users }) {
   return (
     <>
       <VStack w='100%' p={4} >
-      {dummy.map((user, index) => {
+      {users.map((user, index) => {
         return (
           <HStack key={index} w='30%' justifyContent='space-between' p={4} boxShadow='md' borderRadius='lg' shadow='md' 
           borderColor='gray.900' borderWidth='1px'>

@@ -34,8 +34,9 @@ function App() {
   
   return (
     <>
-     <Home/>
-     <Users/>
+     <Routes>
+      <Route path="/" element={<Home />} />
+     </Routes>
     </>
   );
 }
