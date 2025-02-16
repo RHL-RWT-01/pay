@@ -35,7 +35,11 @@ function App() {
   return (
     <>
      <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={isAuthenticated?<Home />:<Login/>} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="*" element={() => <Navigate to="/" />} />
      </Routes>
     </>
   );
