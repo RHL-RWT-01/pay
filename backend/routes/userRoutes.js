@@ -56,6 +56,18 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ message: e.message });
     }
 });
+router.get('/me',protectedRoute,async(req,res)=>{
+    try {
+        const user = await User.findById(req.user._id).select('-password');
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user);
+    } catch (e) {
+        console.log("Error in me route", e);
+        res.status(500).json({ message: e.message });
+    }
+})
 
 router.post("/update", protectedRoute, async (req, res) => {
     try {
