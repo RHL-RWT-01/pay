@@ -18,7 +18,7 @@ function App() {
     queryKey: ["isAuthenticated"],
     queryFn: async () => {
       try {
-        const res = await axios.get(`/api/v1/users/me`);
+        const res = await axios.get(`/api/v1/user/me`);
         return res.data();
       } catch (e) {
         throw new Error("Failed to authenticate");
