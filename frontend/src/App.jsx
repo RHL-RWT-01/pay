@@ -10,6 +10,7 @@ import axios from "axios";
 function App() {
   //TODO => add api url to validate me in BE and here also
   // const isAuth=true;
+  
   const {
     data: isAuthenticated,
     isLoading,
@@ -34,13 +35,13 @@ function App() {
   
   return (
     <>
-     <Routes>
+    <Home/>
+     {/* <Routes>
       <Route path="/" element={isAuthenticated?<Home />:<Login/>} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/users" element={<Users />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={() => <Navigate to="/" />} />
-     </Routes>
+      </Routes> */}
     </>
   );
 }
