@@ -1,7 +1,9 @@
 import { Button, Heading, Input, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,7 +40,11 @@ function Login() {
       </Button>
 
       <p>Don't Have Account
-        <a href="/signup"> Signup</a>
+        <Button
+        onClick={
+          navigate("/signup")
+        }
+        >SignUp</Button>
       </p>
     </VStack>
   );

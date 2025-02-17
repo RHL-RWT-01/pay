@@ -51,6 +51,7 @@ function Signup() {
       >
         Signup
       </Button>
+      <Button>Don't have account? <a href="/login">Login</a></Button>
     </VStack>
   );
 }
