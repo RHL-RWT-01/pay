@@ -26,19 +26,20 @@ function Login() {
         type="password"
         size="md"
       />
-      
+
       <Button
         colorScheme="blue"
         size="md"
         w="full"
         onClick={handleLogin}
-        _hover={{ bg: "black", color:"white", borderColor:"blue" }}
+        _hover={{ bg: "black", color: "white", borderColor: "blue" }}
       >
         Login
       </Button>
-      <Button>Don't Have Account 
-      <a href="/signup">Signup</a>
-      </Button>
+
+      <p>Don't Have Account
+        <a href="/signup"> Signup</a>
+      </p>
     </VStack>
   );
 }
