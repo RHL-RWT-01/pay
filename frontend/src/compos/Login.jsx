@@ -1,16 +1,22 @@
 import { Button, Heading, Input, VStack } from "@chakra-ui/react";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const queryClient = useQueryClient();
 
   const handleLogin = () => {
     console.log("Email:", email);
     console.log("Password:", password);
+    queryClient.invalidateQueries({ queryKey: ["isAuthenticated"] });
   };
+  
+
 
   return (
     <VStack spacing={4} w="300px" p={4} boxShadow="md" borderRadius="lg">
@@ -39,13 +45,10 @@ function Login() {
         Login
       </Button>
 
-      <p>Don't Have Account
-        <Button
-        onClick={
-          navigate("/signup")
-        }
-        >SignUp</Button>
-      </p>
+      <Button>
+        Don't have account?
+        <Link to="/signup">Signup</Link>
+      </Button>
     </VStack>
   );
 }

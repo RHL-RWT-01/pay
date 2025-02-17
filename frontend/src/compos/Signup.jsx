@@ -7,10 +7,9 @@ function Signup() {
   const [name, setName] = useState("");
   async function handleSignup() {
     const res = await fetch("/api/v1/user/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-        
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
     });
     if (!res.ok) {
       throw new Error("Failed to signup");
@@ -19,7 +18,7 @@ function Signup() {
     console.log(data);
   }
   return (
-    <VStack>
+    <VStack spacing={4} w="300px" p={4} boxShadow="md" borderRadius="lg">
       <Box bg="teal.900" p={4} rounded="lg">
         Signup
       </Box>
@@ -51,7 +50,9 @@ function Signup() {
       >
         Signup
       </Button>
-      <Button>Don't have account? <a href="/login">Login</a></Button>
+      <Button>
+        Don't have account? <a href="/login">Login</a>
+      </Button>
     </VStack>
   );
 }
