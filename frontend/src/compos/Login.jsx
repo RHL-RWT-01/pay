@@ -12,13 +12,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const queryClient = useQueryClient();
-
-  // // const handleLogin = () => {
-  // //   console.log("Email:", email);
-  // //   console.log("Password:", password);
-  // //   queryClient.invalidateQueries({ queryKey: ["isAuthenticated"] });
-  // // };
   const queryClient = useQueryClient();
 
   const { mutate: handleLogin, isLoading } = useMutation({
@@ -33,6 +26,7 @@ function Login() {
       const resData = await response.json();
       return resData;
     },
+    retry: 0,
     onMutate: () => {
       queryClient.setQueryData("isAuthenticated", true);
     },
