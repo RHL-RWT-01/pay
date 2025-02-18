@@ -15,13 +15,13 @@ function Login() {
   const queryClient = useQueryClient();
 
   const { mutate: handleLogin, isLoading } = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async () => {
       const response = await fetch("/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ email, password }),
       });
       const resData = await response.json();
       return resData;
