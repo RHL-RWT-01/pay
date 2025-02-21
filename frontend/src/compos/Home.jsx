@@ -9,11 +9,10 @@ function Home() {
   const [searchUser, setSearchUser] = useState("");
   const [balance, setBalance] = useState(null);
   const handleSearch = debounce(async () => {
-    try{
+    try {
       const response = await axios.get(`/api/v1/user/findByStartsWith`);
       setSearchUser(response.data);
-
-    }catch(e){
+    } catch (e) {
       console.log("Error in search route", e);
       throw new Error(e.message);
     }
@@ -29,11 +28,14 @@ function Home() {
         p={4}
         borderRadius="lg"
         boxShadow="lg"
-
       >
         PayEasy
       </Heading>
-      {<Heading shadow="md" color="green.400" >Your Balance:{balance}</Heading>}
+      {
+        <Heading shadow="md" color="green.400">
+          Your Balance:{balance}
+        </Heading>
+      }
       <HStack p={4}>
         <Input
           w="100%"
@@ -43,16 +45,8 @@ function Home() {
         <IconButton>
           <FaSearch onClick={handleSearch} size="25px" />
         </IconButton>
-
-        {/* <Profile/> */}
       </HStack>
-      {/* {!searchUser ? (
-        <Heading fontSize="16px" > User Not Found</Heading>
-      ) : (
-        
-      )} */}
-       {/* users={searchUser} */}
-      <Users/>
+      <Users />
     </>
   );
 }
