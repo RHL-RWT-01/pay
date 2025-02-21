@@ -9,7 +9,7 @@ const dummy=[{name:"Rahul"},{name:"Sanjay"},{name:"Anurag"}]
 function Users({ users }) {
 
   const {mutate:handleTransfer}=useMutation({
-    mutationFn: async () => {
+    mutationFn: async (user) => {
       const response = await axios.post(`/api/v1/user/transactions/transfer`,{
         amount: 100,
         recipientId: user._id
@@ -18,7 +18,7 @@ function Users({ users }) {
     },
     retry: 0,
     onSuccess: (data) => {
-      Toast({"Amount Transfered successsfully"});
+      Toast("Amount Transfered successsfully");
     },
     onError: (error) => {
       console.log("Error:", error);
@@ -34,7 +34,7 @@ function Users({ users }) {
             <Heading>{user.name}</Heading>
             <Button
             onClick={
-              handleTransfer()
+              handleTransfer(user)
             }
             size='xs' 
             _hover={{ bg: "black", color:"white", borderColor:"blue" }}
