@@ -1,4 +1,3 @@
-import { Button, Center, HStack, Spinner, VStack } from "@chakra-ui/react";
 import Login from "./compos/Login";
 import Signup from "./compos/Signup";
 import Home from "./compos/Home";
@@ -8,9 +7,6 @@ import Users from "./compos/Users";
 import Profile from "./compos/Profile";
 import axios from "axios";
 function App() {
-  //TODO => add api url to validate me in BE and here also
-  // const isAuth=true;
-
   const {
     data: isAuthenticated,
     isLoading,
@@ -33,10 +29,13 @@ function App() {
 
   return (
     <>
-      {/* <Home/> */}
       <Routes>
-        <Route path="/" element={isAuthenticated?<Home />:<Navigate to="/login" replace />} />
-        {/* <Route path="/login" element={!isLoading && <Login />} /> */}
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={isAuthenticated && <Users />} />
