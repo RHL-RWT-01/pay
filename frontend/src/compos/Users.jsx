@@ -8,23 +8,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 const dummy=[{name:"Rahul"},{name:"Sanjay"},{name:"Anurag"}]
 function Users({ users }) {
 
-  const handleTransfer = async () => {
-    // try{
-    //   const response = await axios.post(`/api/v1/user/transactions/transfer`,{
-    //     amount: 100,
-    //     recipientId: user._id
-    //   });
-    //   console.log(response.data);
-    // }
-  }
-  // const{data,error}=useQuery({
-  //   queryKey: ['balance'],
-  //   queryFn: async () => {
-  //     const response = await axios.get('/api/v1/transactions/balance');
-  //     setBalance(response.data);
-  //   }
-  // })
-  const {muatate:handleTransfer}=useMutation({
+  const {mutate:handleTransfer}=useMutation({
     mutationFn: async () => {
       const response = await axios.post(`/api/v1/user/transactions/transfer`,{
         amount: 100,
@@ -34,7 +18,7 @@ function Users({ users }) {
     },
     retry: 0,
     onSuccess: (data) => {
-      Toast({""})
+      Toast({"Amount Transfered successsfully"});
     },
     onError: (error) => {
       console.log("Error:", error);
