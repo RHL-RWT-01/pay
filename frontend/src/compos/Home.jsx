@@ -32,7 +32,7 @@ function Home() {
         PayEasy
       </Heading>
       {
-        <Heading shadow="md" color="green.400">
+        <Heading shadow="md" color="blue.400">
           Your Balance:{balance}
         </Heading>
       }
